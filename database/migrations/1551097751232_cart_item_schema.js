@@ -3,14 +3,13 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class OrderItemSchema extends Schema {
+class CartItemSchema extends Schema {
   up () {
-    this.create('order_items', (table) => {
+    this.create('cart_items', (table) => {
       table.increments()
       table.integer('product_id').unsigned()
       table.integer('qty')
-      table.integer('order_id').unsigned()
-      table.timestamps()
+      table.integer('cart_id').unsigned()
 
       table.
         foreign('product_id')
@@ -18,16 +17,16 @@ class OrderItemSchema extends Schema {
         .inTable('products')
         .onDelete('cascade')
       table.
-        foreign('order_id')
+        foreign('cart_id')
         .references('id')
-        .inTable('orders')
+        .inTable('carts')
         .onDelete('cascade')
     })
   }
 
   down () {
-    this.drop('order_items')
+    this.drop('cart_items')
   }
 }
 
-module.exports = OrderItemSchema
+module.exports = CartItemSchema
