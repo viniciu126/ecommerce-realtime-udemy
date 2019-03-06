@@ -22,6 +22,12 @@ class User extends Model {
   }
 
   /**
+   * Oculta os campos definidos como hidden, das queries no DB
+   */
+  static get hidden() {
+    return ['password']
+  }
+  /**
    * User Traits
    * 
    */
@@ -45,7 +51,9 @@ class User extends Model {
   tokens () {
     return this.hasMany('App/Models/Token')
   }
-
+  /**
+   * Relacionamento entre Usuário e Imagem
+   */
   image() {
     return this.belongsTo('App/Models/Image')
   }
