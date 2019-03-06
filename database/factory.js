@@ -40,3 +40,5 @@ Factory.blueprint('App/Models/Product', (faker) => {
     price: faker.floating({ min:0, max:200, fixed:2 })
   }
 })
+
+
